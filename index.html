@@ -1,13 +1,18 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="src/estilos/style.css">
+  </head>
   <body>
-    <h1>Sumador</h1>
-    <form id="sumar-form">
-      <label for="primer-numero">Primer número:</label>
-      <input type="number" id="primer-numero" />
-      <label for="segundo-numero">Segundo número:</label>
-      <input type="number" id="segundo-numero" />
-      <input type="submit" value="Sumar" id="sumar-button" />
-    </form>
+    <h1>TUS PROYECTOS</h1>
+    <div id="contenedor">
+      <button id="btnAgregarProyecto">Añadir Proyecto</button>
+      <div id="formulario" class="formulario">
+        <form id="formProyecto">
+          <label for="titulo">Escribe aquí el título del proyecto:</label><br>
+          <input type="text" id="titulo" name="titulo" placeholder="Escribe un titulo para el proyecto"><br>
+          <button type="submit" id="btnConfirmar">Confirmar</button>
+        </form>
+      </div>
     <div id="resultado-div"></div>
 
     <script type="module" src="./src/presenter.js"></script>

@@ -1,15 +1,23 @@
-import sumar from "./sumador";
+document.addEventListener('DOMContentLoaded', function() {
+  const btnAgregarProyecto = document.getElementById('btnAgregarProyecto');
+  const formulario = document.getElementById('formulario');
 
-const first = document.querySelector("#primer-numero");
-const second = document.querySelector("#segundo-numero");
-const form = document.querySelector("#sumar-form");
-const div = document.querySelector("#resultado-div");
+  btnAgregarProyecto.addEventListener('click', function() {
+    btnAgregarProyecto.style.display = 'none';
+    formulario.style.display = 'block';
+  });
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+  const formProyecto = document.getElementById('formProyecto');
+  formProyecto.addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita que el formulario se envíe
 
-  const firstNumber = Number.parseInt(first.value);
-  const secondNumber = Number.parseInt(second.value);
+    // Aquí puedes realizar acciones con el título del proyecto, por ejemplo:
+    const tituloProyecto = document.getElementById('titulo').value;
+    console.log('Título del proyecto:', tituloProyecto);
 
-  div.innerHTML = "<p>" + sumar(firstNumber, secondNumber) + "</p>";
+    // Restablece el formulario y muestra nuevamente el botón "Añadir Proyecto"
+    formProyecto.reset();
+    btnAgregarProyecto.style.display = 'block';
+    formulario.style.display = 'none';
+  });
 });
