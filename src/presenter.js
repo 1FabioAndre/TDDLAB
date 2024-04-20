@@ -1,3 +1,5 @@
+import ingresarTitulo from "./ingresarTitulo";
+
 document.addEventListener('DOMContentLoaded', function() {
   const btnAgregarProyecto = document.getElementById('btnAgregarProyecto');
   const formulario = document.getElementById('formulario');
@@ -21,10 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
      // Aquí puedes realizar acciones con el título del proyecto, por ejemplo:
     const tituloProyecto = document.getElementById('titulo').value;
+
     console.log('Título del proyecto:', tituloProyecto);
 
      // Agregar el título del proyecto al array de proyectos
-     proyectos.push(tituloProyecto);
+     proyectos.push(ingresarTitulo(tituloProyecto));
      // Mostrar todos los proyectos añadidos
      proyectosAgregados.innerHTML = ''; // Limpiar el contenedor
      proyectos.forEach(function(proyecto) {
