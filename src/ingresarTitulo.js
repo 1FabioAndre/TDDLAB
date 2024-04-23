@@ -1,5 +1,5 @@
 
-function ingresarTitulo(titulo){
+function ingresarTitulo(titulo) {
     return titulo;
 }
 
