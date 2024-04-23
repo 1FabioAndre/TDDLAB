@@ -1,11 +1,12 @@
 import ingresarTitulo from "./ingresarTitulo";
+import { addProject, borrarProyecto } from "./proyectos";
 
 document.addEventListener('DOMContentLoaded', function () {
   const btnAgregarProyecto = document.getElementById('btnAgregarProyecto');
   const formulario = document.getElementById('formulario');
   const mensaje = document.getElementById('mensaje');
   const proyectosAgregados = document.getElementById('proyectosAgregados');
-  const proyectos = []; // Array para almacenar los títulos de los proyectos
+  let proyectos = []; // Array para almacenar los títulos de los proyectos
 
   btnAgregarProyecto.addEventListener('click', function () {
     btnAgregarProyecto.style.display = 'none';
@@ -26,17 +27,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log('Título del proyecto:', tituloProyecto);
 
-    // Agregar el título del proyecto al array de proyectos
-    proyectos.push(ingresarTitulo(tituloProyecto));
+    // Agregar el título del proyecto al array de proyectos usando la función addProject
+    proyectos = addProject(tituloProyecto);
+
     // Mostrar todos los proyectos añadidos
-    proyectosAgregados.innerHTML = ''; // Limpiar el contenedor
-    proyectos.forEach(function (proyecto) {
-      proyectosAgregados.innerHTML += `<p>Proyecto: ${proyecto}</p>`;
-    });
+    actualizarProyectos(proyectos);
 
     // Restablece el formulario y muestra nuevamente el botón "Añadir Proyecto"
     formProyecto.reset();
     btnAgregarProyecto.style.display = 'block';
     formulario.style.display = 'none';
   });
+
+  // Función para mostrar todos los proyectos añadidos
+  function actualizarProyectos(proyectos) {
+    proyectosAgregados.innerHTML = ''; // Limpiar el contenedor
+    proyectos.forEach(function (proyecto) {
+      proyectosAgregados.innerHTML += `
+        <div>
+          <p>Proyecto: ${proyecto}</p>
+          <button class="btnEliminar" data-titulo="${proyecto}">Eliminar</button>
+        </div>`;
+    });
+
+    // Agregar event listener a los botones de eliminar
+    const btnsEliminar = document.querySelectorAll('.btnEliminar');
+    btnsEliminar.forEach(function (btnEliminar) {
+      btnEliminar.addEventListener('click', function () {
+        const tituloAEliminar = this.getAttribute('data-titulo');
+        proyectos = borrarProyecto(tituloAEliminar);
+        actualizarProyectos(proyectos);
+      });
+    });
+  }
 });

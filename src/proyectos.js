@@ -12,6 +12,7 @@ function borrarProyecto(tituloABorrar) {
     if (indice !== -1) {
         proyectos.splice(indice, 1);
     }
+
     return proyectos;
 }
 

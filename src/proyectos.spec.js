@@ -1,6 +1,5 @@
 import { addProject, borrarProyecto } from "./proyectos";
 
-
 describe("Añadir proyectos", () => {
     it("Deberia mostrar una array vacio", () => {
         expect(addProject()).toEqual([]);
@@ -20,5 +19,9 @@ describe("Añadir proyectos", () => {
 
     it("Debería borrar un proyecto del array", () => {
         expect(borrarProyecto("Titulo2")).toEqual([]);
+    });
+
+    it("Debería borrar un proyecto del array", () => {
+        expect(borrarProyecto("Titulo")).toEqual([]);
     });
 });
