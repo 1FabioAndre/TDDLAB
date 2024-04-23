@@ -7,4 +7,12 @@ function addProject(titulo = "") {
     return proyectos;
 }
 
-export default addProject;
+function borrarProyecto(tituloABorrar) {
+    const indice = proyectos.findIndex(proyecto => proyecto === tituloABorrar);
+    if (indice !== -1) {
+        proyectos.splice(indice, 1);
+    }
+    return proyectos;
+}
+
+export { addProject, borrarProyecto };
